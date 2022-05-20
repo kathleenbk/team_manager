@@ -23,6 +23,12 @@ const Main = () => {
             .catch((err) => console.log(err))
     }
 
+    const confirmDelete = (deleteId, deleteName) => {
+        if (window.confirm(`Are you sure you want to delete ${deleteName}?`)) {
+            deletePlayer(deleteId);
+        }
+    }
+
     return (
         <div className='main'>
             <div className='box'>
@@ -43,7 +49,7 @@ const Main = () => {
                                 <td className='big'>{player.position}</td>
                                 <td>Game 1 - {player.status.game1status}<br />Game 2 - {player.status.game2status}<br />Game 3 - {player.status.game3status}
                                 </td>
-                                <td><button onClick={() => deletePlayer(player._id)}>Delete</button></td>
+                                <td><button onClick={() => confirmDelete(player._id, player.name)}>Delete</button></td>
                             </tr>
                         )
 
